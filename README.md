@@ -1,2 +1,3 @@
-# FakeStagram
-Java Spring/Tymeleaf web application. 
+# FAKESTAGRAM
+
+Spring/Thymeleaf web application for uploading images.

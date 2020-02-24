@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments :: head" ></head>
+
+<body id="page-top">
+<div th:replace="fragments :: header"></div>
+
+<header class="masthead bg-primary text-white text-center">
+    <section id="about" class="bg-primary text-white mb-0">
+        <div class="container bg-primary">
+            <img th:src="@{images/profile_icon.png}" th:width="100" th:height="100">
+            <h2 class="text-uppercase text-center text-white">User profile Page</h2>
+            <hr class="star-light mb-5">
+            <div class="nav-item mx-0 mx-lg-1" role="presentation" sec:authorize="isAuthenticated()">
+                <form method="POST" th:action="@{/logout}" style="color: white">
+                    Username: <span sec:authentication="name">Korisnik</span>.
+                </form>
+            </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')"  >
+                <span>This user has administrator privileges.</span>
+            </div>
+            <div sec:authorize="hasRole('ROLE_USER')"  >
+                <span>This user has basic user privileges.</span>
+            </div>
+        </div>
+        <br><br><br><br>
+    </section>
+</header>
+
+<div th:replace="fragments :: footer"></div>
+<script th:replace="fragments :: js"></script>
+
+</body>
+
+</html>

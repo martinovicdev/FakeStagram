@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body id="page-top">
+
+<head th:insert="fragments :: head" ></head>
+
+<header th:insert="fragments :: header"></header>
+
+<header class="masthead bg-primary text-white text-center">
+    <section id="newUser" class="bg-primary text-white mb-0">
+        <div class="container">
+
+            <h3>Create new User</h3>
+            <form method="POST" th:object="${user}">
+                <div class="form-row">
+                    <div class="col-md-4 mb-3"></div>
+                    <div class="col-md-4 mb-3">
+                        <label for="username">Username: </label>
+                        <input id="username" type="text" th:field="*{username}" class="form-control" />
+                        <span class="validation-error"
+                              th:if="${#fields.hasErrors('username')}"
+                              th:errors="*{username}">
+                </span>
+                    </div>
+                    <div class="col-md-4 mb-3"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-4 mb-3"></div>
+                    <div class="col-md-4 mb-3">
+                        <label for="password">Password: </label>
+                        <input id="password" type="password" th:field="*{password}" class="form-control" />
+                        <span class="validation-error"
+                              th:if="${#fields.hasErrors('password')}"
+                              th:errors="*{password}">
+                </span>
+                    </div>
+                    <div class="col-md-4 mb-3"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-4 mb-3"></div>
+                    <div class="col-md-4 mb-3">
+                        <label for="type">User tier:</label>
+                        <select id="type" th:field="*{permission}" class="form-control">
+                            <option th:each="userType : ${userTypes}"
+                                    th:value="${userType}"
+                                    th:text="${userType}">
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 mb-3"></div>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-4 mb-3"></div>
+                    <div class="col-md-4 mb-3">
+                        <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>
+                        <input type="submit" value="Register now" class="btn btn-dark" />
+                    </div>
+                    <div class="col-md-4 mb-3"></div>
+                </div>
+            </form>
+        </div>
+        <br><br><br><br>
+    </section>
+</header>
+
+<div th:insert="fragments :: footer"></div>
+<div th:replace="fragments :: js"></div>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head" ></head>
+
+<body id="page-top">
+<div th:replace="fragments :: header"></div>
+
+<header class="masthead bg-primary text-white text-center">
+    <section id="about" class="bg-primary text-white mb-0">
+        <br class="container">
+            <img th:src="@{images/picture.png}" th:width="150" th:height="150">
+            <p>&nbsp; &nbsp;</p>
+            <h2 class="text-uppercase text-center text-white">¯\_(ツ)_/¯</h2>
+            <p>&nbsp;</p>
+            <div th:each="image : ${imglist}">
+                <br th:utext="#{msg.imageList(${image.name}, ${image.fakeness},${image.type}, ${#temporals.format(image.date, 'dd.MM.yyyy.')})}">
+                <img th:src="@{${image.path}}" th:alt="${image.name}" th:width="150" th:height="150">
+            </div>
+        <br><br><br><br><br>
+    </section>
+</header>
+
+
+<div th:replace="fragments :: footer"></div>
+<script th:replace="fragments :: js"></script>
+
+</body>
+
+</html>

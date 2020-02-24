@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:replace="fragments :: head" ></head>
+
+<body id="page-top">
+<div th:replace="fragments :: header"></div>
+
+<header class="masthead bg-primary text-white text-center">
+    <section id="about" class="bg-primary text-white mb-0">
+            <div class="container-fluid" style="color: white">
+                <div th:replace="fragments :: header"></div>
+                <img th:src="@{/images/success.png}" th:width="250" th:height="250">
+                <div>
+                    <span th:utext="#{msg.imageUploaded(${image.name}, ${image.fakeness})}" ></span>
+                </div>
+                <div>
+                    <span th:utext="#{msg.imageUploaded2(${image.type}, ${#temporals.format(image.date, 'dd.MM.yyyy.')})}" ></span>
+                </div>
+                <div>
+                    <h3><a href="/images/new" style="color: darkcyan"><span th:text="#{msg.NewImage}"></span></a></h3>
+                </div>
+
+        </div>
+        <br><br><br><br>
+    </section>
+</header>
+
+<div th:replace="fragments :: footer"></div>
+
+</body>
+
+</html>

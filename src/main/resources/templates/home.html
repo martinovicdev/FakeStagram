@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments :: head" ></head>
+
+<body id="page-top">
+<div th:replace="fragments :: header"></div>
+
+<header class="masthead bg-primary text-white text-center">
+    <section id="about" class="bg-primary text-white mb-0">
+        <div class="container">
+
+            <h2 class="text-uppercase text-center text-white"><span th:text="#{msg.about}"></span></h2>
+            <hr class="star-light mb-5">
+            <div class="row">
+                <div class="col-lg-4 ml-auto">
+                    <p class="lead"><span th:text="#{msg.homeText1}"></span></p>
+                </div>
+                <div class="col-lg-4 mr-auto">
+                    <p class="lead"><span th:text="#{msg.homeText2}"></span></p>
+                </div>
+            </div>
+            <div class="text-center mt-4"><a class="btn btn-outline-light btn-xl" role="button" th:href="@{/images}"><span th:text="#{msg.viewNow}"></span></a></div>
+        </div>
+    </section>
+</header>
+
+<div th:replace="fragments :: footer"></div>
+<script th:replace="fragments :: js"></script>
+
+</body>
+
+</html>

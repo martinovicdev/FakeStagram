@@ -1,0 +1,66 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+
+<head th:fragment="head">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - FakeStagram</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic">
+    <link rel="stylesheet" href="fonts/font-awesome.min.css">
+</head>
+
+<div th:fragment="header" id="navigation" >
+
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-secondary text-uppercase" id="mainNav">
+        <div class="container"><img th:src="@{/images/logo.png}" th:width="70" th:height="70" ><a class="navbar-brand js-scroll-trigger" href="/">&nbsp; &nbsp; FakeStagram</a><button data-toggle="collapse" data-target="#navbarResponsive" class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item mx-0 mx-lg-1" role="presentation" sec:authorize="isAuthenticated()"><a class="nav-link py-3 px-0 px-lg-3 rounded" th:href="@{/images/new}"><span th:text="#{msg.NewImage}"></span></a></li>
+                    <li class="nav-item mx-0 mx-lg-1" role="presentation" sec:authorize="isAuthenticated()"><a class="nav-link py-3 px-0 px-lg-3 rounded" th:href="@{/images}"><span th:text="#{msg.Images}"></span></a></li>
+                    <li class="nav-item mx-0 mx-lg-1" role="presentation" sec:authorize="isAuthenticated()"><a class="nav-link py-3 px-0 px-lg-3 rounded"th:href="@{/profile}"><span th:text="#{msg.Profile}"></span></a></li>
+                </ul>
+
+                <div>
+                    <span th:text="#{msg.lang.current}" style="color: white"></span>:
+                    <select id="locales">
+                        <option value="hr" th:selected="${#locale.language == 'hr'}" th:text="#{msg.lang.hr}"></option>
+                        <option value="en" th:selected="${#locale.language == 'en'}" th:text="#{msg.lang.en}"></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="nav-item mx-0 mx-lg-1" role="presentation" sec:authorize="isAuthenticated()">
+            <form method="POST" th:action="@{/logout}" style="color: white">
+                <span th:text="#{msg.userInfo}"></span>
+                <span sec:authentication="name">Korisnik</span>. &nbsp;
+                <input type="submit" value="Logout" class="btn btn-danger" />
+            </form>
+        </div>
+    </nav>
+</div>
+
+<div th:fragment="footer" id="footer">
+    <div class="copyright py-4 text-center text-white">
+        <div class="container"><small>Copyright ©&nbsp;FakeStagram 2020</small></div>
+    </div>
+</div>
+
+<div th:fragment="js" >
+    <script type="text/javascript" src="js/jquery.min.js" th:src="@{js/jquery.min.js}"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js" th:src="@{js/bootstrap.min.js}"></script>
+    <script type="text/javascript" src="../static/js/behavior.js" th:src="@{js/behaviobehavior.js}"></script>
+    <script type="text/javascript" src="../static/js/i18n.js" th:src="@{js/i18n.js}"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+</div>
+
+</body>
+
+</html>
